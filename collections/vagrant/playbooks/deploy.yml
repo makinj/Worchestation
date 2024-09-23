@@ -1,0 +1,4 @@
+- name: Deploy to vagrant hypervisors
+  hosts: "vagrant_hypervisor"
+  roles: 
+    - vmutti.vagrant.deploy

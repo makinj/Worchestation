@@ -1,0 +1,3 @@
+packer_path: /cygdrive/c/ProgramData/chocolatey/bin/packer
+vagrant_binary_path: /cygdrive/c/HashiCorp/Vagrant/bin/vagrant
+force_imports: false

@@ -1,0 +1,8 @@
+[
+  "common-provisioners/base/users/humans/",
+  "common-provisioners/base/zsh/install/",
+  "common-provisioners/base/tmux/install/",
+  "common-provisioners/base/vim/install/",
+  "common-provisioners/gui/xfce/install/",
+  "common-provisioners/gui/chrome/install"
+]

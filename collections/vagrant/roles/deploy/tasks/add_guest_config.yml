@@ -1,0 +1,47 @@
+- name: Declare empty guest config
+  set_fact:
+    vagrant_guest_config: {}
+
+- name: Copy vagrant guest configs from host variables
+  set_fact:
+    vagrant_guest_config: "{{ vagrant_guest_config | combine( [item | combine({'key':item.key[8:]})] | items2dict ) }}"
+  with_items: "{{ dict(hostvars[vagrant_guest_name]) | dict2items}}"
+  loop_control:
+    label: "{{item.key}}"
+  when: item.key.startswith('vagrant_')
+
+- name: build vagrant box add command
+  tags:
+    - vagrant_box_add
+  set_fact:
+    vagrant_box_add_command_args: "{{ (vagrant_box_add_command_args | default([])) | union([item]) }}"
+  when: item != omit
+  loop:
+    - "{{ vagrant_binary_path }}"
+    - box
+    - add
+    - "file:///{{vagrant_boxes_path}}/{{ hostvars[vagrant_guest_name].vagrant_box }}.box"
+    - "{{ (force_imports | default(False)) | ternary('--force', omit) }}"
+    - --name
+    - "{{ hostvars[vagrant_guest_name].vagrant_box }}"
+
+- name: "Import {{ hostvars[vagrant_guest_name].vagrant_box }} Box path for {{ vagrant_guest_name }}"
+  tags:
+    - vagrant_box_add
+  command:  
+    argv: "{{vagrant_box_add_command_args}}"
+  ignore_errors: true
+
+- name: "Add guest name=\"{{ vagrant_guest_name }}\""
+  set_fact:
+    vagrant_guest_config: "{{ vagrant_guest_config | combine( {'name': vagrant_guest_name} ) }}"
+
+- name: Show vagrant guest config
+  debug:
+    var: vagrant_guest_config
+    verbosity: 2
+
+
+- name: Add to guest list
+  set_fact:
+    vagrant_guest_configs: "{{ vagrant_guest_configs + [vagrant_guest_config] }}"

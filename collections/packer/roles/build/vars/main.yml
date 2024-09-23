@@ -1,0 +1,4 @@
+packer_packager_extensions:
+  vagrant: box
+  iso: iso
+  img: img
