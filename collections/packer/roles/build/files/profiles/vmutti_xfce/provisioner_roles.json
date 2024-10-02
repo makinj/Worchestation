@@ -1,8 +1,0 @@
-[
-  "vmutti.human_users.install",
-  "vmutti.zsh.install",
-  "vmutti.tmux.install",
-  "vmutti.vim.install",
-  "vmutti.xfce.install",
-  "vmutti.chrome.install"
-]

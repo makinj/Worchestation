@@ -2,7 +2,7 @@
 # The namespace of the collection. This can be a company/brand/organization or product namespace under which all
 # content lives. May only contain alphanumeric lowercase characters and underscores. Namespaces cannot start with
 # underscores or numbers and cannot contain consecutive underscores
-namespace: vmutti
+namespace: makinj
 
 # The name of the collection. Has the same character restrictions as 'namespace'
 name: packer
@@ -16,17 +16,18 @@ readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-- your name <example@domain.com>
+- Joshua Makinen <makinj64@gmail.com>
 
 
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
-description: your collection description
+description: Plugins to combine and invert group relationships to simplify complex and repetitive Ansible inventories
+
 
 # Either a single license or a list of licenses for content inside of a collection. Ansible Galaxy currently only
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'
 license:
-- GPL-2.0-or-later
+- MIT
 
 # The path to the license file for the collection. This path is relative to the root of the collection. This key is
 # mutually exclusive with 'license'
@@ -43,13 +44,13 @@ tags: []
 dependencies: {}
 
 # The URL of the originating SCM repository
-repository: http://example.com/repository
+repository: https://github.com/makinj/Worchestation
 
 # The URL to any online docs
-documentation: http://docs.example.com
+# documentation: http://docs.example.com
 
 # The URL to the homepage of the collection/project
-homepage: http://example.com
+# homepage: http://example.com
 
 # The URL to the collection issue tracker
 issues: http://example.com/issue/tracker

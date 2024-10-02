@@ -1,8 +1,0 @@
----
-dependencies: []
-galaxy_info:
-  author: Joshua Makinen
-  role_name: packer_build
-  description: Builds images with packer
-  company: Vmutti
-  license: license (MIT)

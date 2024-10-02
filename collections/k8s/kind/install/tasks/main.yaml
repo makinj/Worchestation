@@ -1,7 +1,0 @@
-- name: "Download and install Kind"
-  become: true
-  get_url:
-    url: "https://github.com/kubernetes-sigs/kind/releases/download/v0.11.1/kind-{{ansible_facts.system}}-{{architecture_name_mapping[ansible_facts.userspace_architecture]}}"
-    dest: /usr/bin/kind
-    mode: 755
-    force: true

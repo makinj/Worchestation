@@ -1,50 +1,50 @@
 - name: Deploy to vagrant guests
   hosts: "vagrant_hypervisor"
   roles: 
-    - role: vmutti.updates.install
+    - role: makinj.updates.install
       tags: ['always']
 
-    - role: vmutti.users.humans
+    - role: makinj.users.humans
       tags: ['user_configuration']
     
-    - role: vmutti.users.virtualbox_shared_folders
+    - role: makinj.users.virtualbox_shared_folders
       tags: ['user_configuration']
     
-    - role: vmutti.zsh.install
+    - role: makinj.zsh.install
       tags: ['base','zsh']
     
-    - role: vmutti.tmux.install
+    - role: makinj.tmux.install
       tags: ['base','tmux']
     
-    - role: vmutti.vim.install
+    - role: makinj.vim.install
       tags: ['base','vim']
     
-    - role: vmutti.xfce.install
+    - role: makinj.xfce.install
       tags: ['gui','xfce']
     
-    - role: vmutti.fonts.install
+    - role: makinj.fonts.install
       tags: ['gui','fonts']
     
-    - role: vmutti.background.random
+    - role: makinj.background.random
       tags: ['gui','background']
-    - role: vmutti.chrome.install
+    - role: makinj.chrome.install
       tags: ['gui','chrome']
     
-    - role: vmutti.sublime.install
+    - role: makinj.sublime.install
       tags: ['gui','sublime']
     
     #continue making installations conditional here
-    - role: vmutti.docker.install
+    - role: makinj.docker.install
       tags: ['tools','infra','docker']
     
-    # - role: common-provisioners/vmutti.sdk.install
+    # - role: common-provisioners/makinj.sdk.install
     #   tags: ['tools','infra','gcloud_sdk']
     
-    - role: vmutti.kubectl.install
+    - role: makinj.kubectl.install
       tags: ['tools','infra','k8s','kubectl']
     
-    # - role: common-provisioners/vmutti.kind.install
+    # - role: common-provisioners/makinj.kind.install
     #   tags: ['tools','infra','k8s','kind']
     
-    # - role: common-vmutti.golang.install
+    # - role: common-makinj.golang.install
     #   tags: ['tools','infra','development','golang']

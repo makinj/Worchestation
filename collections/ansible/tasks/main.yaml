@@ -1,4 +1,0 @@
-- name: Install ansible python package
-  when: host_install_ansible
-  pip:
-    name: ansible

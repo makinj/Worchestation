@@ -1,4 +1,0 @@
-{
-  "type": "vagrant",
-  "output": "./builds/{{user `name`}}.box"
-}

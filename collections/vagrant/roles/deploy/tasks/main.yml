@@ -1,6 +1,6 @@
 - name: Build base boxes with packer
   include_role:
-    name: vmutti.packer.build
+    name: makinj.packer.build
 
 - name: Copy vagrant project files
   copy:
