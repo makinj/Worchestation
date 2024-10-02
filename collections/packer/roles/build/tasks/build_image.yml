@@ -1,7 +1,11 @@
+
+- name: "IP Address for host"
+  debug:
+    var: hostvars[inventory_hostname]['ansible_default_ipv4']['address']
 - name: Set variables from item variable
   set_fact:
     packer_image_name: "{{ packer_image_item.key }}"
-    packer_image_vars: "{{ packer_image_defaults | combine({'name':packer_image_item.key,'output_image_path': packer_workdir+'/builds/'+packer_image_item.key+'.'+packer_packager_extensions[(packer_image_defaults|combine(packer_image_item.value))['packager']]}) | combine(packer_image_item.value) }}"
+    packer_image_vars: "{{ packer_image_defaults | combine({'name':packer_image_item.key,'output_image_path': packer_workdir+'/builds/'+packer_image_item.key+'.'+packer_packager_extensions[(packer_image_defaults|combine(packer_image_item.value))['packager']],'httpip':hostvars[inventory_hostname]['ansible_default_ipv4']['address']}) | combine(packer_image_item.value) }}"
   when: packer_image_item is defined
 
 - name: Set output path
@@ -81,6 +85,8 @@
       with_dict: "{{packer_image_vars}}"
 
     # write image packer config
+
+
 
     - name: "Debug packer image config for {{ packer_image_name }}"
       debug:

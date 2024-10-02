@@ -1,0 +1,7 @@
+host_install_tmux: false
+controller_tmux_config_dir: "{{ controller_tools_config_dir }}/tmux"
+tmux_usernames: "{{[main_username]}}"
+tmux_user_config_paths:
+  - ".tmux.conf"
+
+

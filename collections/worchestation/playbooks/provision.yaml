@@ -1,0 +1,50 @@
+- name: Deploy to vagrant guests
+  hosts: "vagrant_hypervisor"
+  roles: 
+    - role: vmutti.updates.install
+      tags: ['always']
+
+    - role: vmutti.users.humans
+      tags: ['user_configuration']
+    
+    - role: vmutti.users.virtualbox_shared_folders
+      tags: ['user_configuration']
+    
+    - role: vmutti.zsh.install
+      tags: ['base','zsh']
+    
+    - role: vmutti.tmux.install
+      tags: ['base','tmux']
+    
+    - role: vmutti.vim.install
+      tags: ['base','vim']
+    
+    - role: vmutti.xfce.install
+      tags: ['gui','xfce']
+    
+    - role: vmutti.fonts.install
+      tags: ['gui','fonts']
+    
+    - role: vmutti.background.random
+      tags: ['gui','background']
+    - role: vmutti.chrome.install
+      tags: ['gui','chrome']
+    
+    - role: vmutti.sublime.install
+      tags: ['gui','sublime']
+    
+    #continue making installations conditional here
+    - role: vmutti.docker.install
+      tags: ['tools','infra','docker']
+    
+    # - role: common-provisioners/vmutti.sdk.install
+    #   tags: ['tools','infra','gcloud_sdk']
+    
+    - role: vmutti.kubectl.install
+      tags: ['tools','infra','k8s','kubectl']
+    
+    # - role: common-provisioners/vmutti.kind.install
+    #   tags: ['tools','infra','k8s','kind']
+    
+    # - role: common-vmutti.golang.install
+    #   tags: ['tools','infra','development','golang']

@@ -1,0 +1,9 @@
+- name: "Destroy kind if necessary ({{kind_deploy}})"
+  when: kind_deploy
+  block:
+    - name: "Destroy kind cluster"
+      command:
+        argv:
+          - kind
+          - delete
+          - cluster

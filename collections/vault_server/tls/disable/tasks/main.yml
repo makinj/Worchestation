@@ -1,0 +1,21 @@
+- name: Set permissions on Storage directory
+  file:
+    owner: "{{ vault_server_user }}"
+    group: "{{ vault_server_group }}"
+    path: "{{ vault_server_storage_path }}"
+    state: directory
+    mode: 0770
+
+- name: Write config file to disable TLS
+  template:
+    src: vault-server-tls-disabled.hcl.j2
+    dest: "{{ vault_server_config_path }}"
+    owner: "{{ vault_server_user }}"
+    group: "{{ vault_server_group }}"
+
+
+- name: restart vault service
+  service:
+    name: "{{ vault_server_service_name }}"
+    state: restarted
+    enabled: yes

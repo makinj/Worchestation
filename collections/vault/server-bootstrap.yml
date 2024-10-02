@@ -1,0 +1,12 @@
+
+
+- hosts: vault
+  vars_prompt:
+    - name: unseal_key
+      prompt: What is your unseal key?
+    - name: root_token
+      prompt: What is your root token?
+  roles:
+    - server-tls-disable
+    - server-unseal
+    - server-tls-bootstrap

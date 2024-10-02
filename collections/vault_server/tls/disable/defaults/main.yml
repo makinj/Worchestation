@@ -1,0 +1,8 @@
+---
+
+vault_server_config_path: "/etc/vault.hcl"
+vault_server_user: "vault"
+vault_server_group: "vault"
+vault_server_port: 8200
+vault_server_storage_path: "/var/vault"
+vault_server_service_name: "vault"

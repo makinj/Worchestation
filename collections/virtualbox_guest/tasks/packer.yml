@@ -1,0 +1,15 @@
+- name: Create packer configs directory if it does not exist
+  file:
+    path: "{{ packer_workdir }}/provisioners/platforms/virtualbox_guest/"
+    state: directory
+    mode: '0700'
+
+- name: "Write packer config for {{ packer_image_name }}"
+  copy:
+    src: "provision.sh"
+    dest: "{{ packer_workdir }}/provisioners/platforms/virtualbox_guest/provision.sh"
+    mode: '0700'
+
+- name: "add virtualbox guest script to list of provisioners"
+  set_fact:
+    packer_image_config_provisioners: "{{packer_image_config_provisioners | union(lookup('file', 'packer_provisioners.json') | from_json)}}"

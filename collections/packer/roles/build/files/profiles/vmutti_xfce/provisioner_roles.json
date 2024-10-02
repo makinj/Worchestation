@@ -1,8 +1,8 @@
 [
-  "common-provisioners/base/users/humans/",
-  "common-provisioners/base/zsh/install/",
-  "common-provisioners/base/tmux/install/",
-  "common-provisioners/base/vim/install/",
-  "common-provisioners/gui/xfce/install/",
-  "common-provisioners/gui/chrome/install"
+  "vmutti.human_users.install",
+  "vmutti.zsh.install",
+  "vmutti.tmux.install",
+  "vmutti.vim.install",
+  "vmutti.xfce.install",
+  "vmutti.chrome.install"
 ]

@@ -1,0 +1,5 @@
+---
+- hosts: vault-servers
+  roles:
+    - server-install
+

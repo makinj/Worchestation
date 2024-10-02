@@ -1,0 +1,71 @@
+
+- name: Creating vault user group
+  group: 
+    name: "{{ vault_server_group }}"
+  become: true
+
+- name: Creating vault user
+  user:
+    name: "{{ vault_server_user }}"
+    group: "{{ vault_server_group }}"
+    system: yes
+    shell: "/sbin/nologin"
+    comment: "vault nologin User"
+    createhome: "no"
+    state: present
+
+- name: Install prerequisites
+  package:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items: "{{ vault_server_install_prerequisites }}"
+  become: yes
+
+- name: Download binary
+  get_url:
+    url: https://releases.hashicorp.com/vault/{{vault_server_version}}/vault_{{vault_server_version}}_{{vault_server_arch}}.zip
+    dest: /tmp/vault_{{vault_server_version}}_{{vault_server_arch}}.zip
+    owner: "{{ vault_server_user }}"
+    group: "{{ vault_server_group }}"
+    mode: 0755
+    checksum: "{{vault_server_checksum}}"
+  register: vault_server_download
+
+- name: "Unzip vault archive"
+  unarchive:
+    src: "{{ vault_server_download.dest }}"
+    dest: "{{ vault_server_install_path }}"
+    copy: no
+    owner: "{{ vault_server_user }}"
+    group: "{{ vault_server_group }}"
+    mode: 0755
+
+- name: "Set vault binary capabilities"
+  capabilities:
+    path: "{{ vault_server_binary_path }}"
+    capability: cap_ipc_lock+ep
+    state: present
+
+- name: Copy systemd init file
+  template:
+    src: init.service.j2
+    dest: "{{ ('/etc/systemd/system/', vault_server_service_name + '.service') | path_join }}"
+    owner: root
+    group: root
+  notify: systemd_reload
+
+- name: Set permissions on Storage directory
+  file:
+    owner: "{{ vault_server_user }}"
+    group: "{{ vault_server_group }}"
+    path: "{{ vault_server_storage_path }}"
+    state: directory
+    mode: 0770
+
+- name: vault service
+  service:
+    name: "{{ vault_server_service_name }}"
+    state: started
+    enabled: yes
+    
+

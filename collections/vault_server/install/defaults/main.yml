@@ -1,0 +1,11 @@
+---
+vault_server_version: "1.6.2"
+vault_server_arch: "linux_amd64"
+vault_server_checksum: "sha256:8eaac42a3b41ec45bd6498c3dc5a1aa9be2c1723c0a43cc68ac25a8cfcb49ded"
+vault_server_host_prerequisites: ['unzip']
+vault_server_user: "vault"
+vault_server_group: "vault"
+vault_server_config_path: "/etc/vault.hcl"
+vault_server_service_name: "vault"
+vault_server_install_path: "/usr/local/bin/"
+

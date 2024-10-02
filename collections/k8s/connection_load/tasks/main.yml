@@ -1,0 +1,5 @@
+
+- name: "Add K8s connection facts"
+  set_fact:
+    kubeconfig_path: "{{k8s_cluster_connections[k8s_cluster_connection | default(k8s_cluster_connection_default)].kubeconfig_path}}"
+    kubeconfig_context: "{{k8s_cluster_connections[k8s_cluster_connection | default(k8s_cluster_connection_default)].kubeconfig_context}}"

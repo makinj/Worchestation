@@ -1,0 +1,12 @@
+- name: "Install background if necessary ({{install_background}})"
+  when: host_install_background
+  block:
+  - name: "Download random background"
+    become: true
+    get_url:
+      url: https://picsum.photos/1920/1200
+      dest: "{{item}}"
+      force: true
+    with_items:
+      - /usr/share/images/desktop-base/default
+    when: random_background_force

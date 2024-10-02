@@ -1,0 +1,5 @@
+---
+vault_server_user: "vault"
+vault_server_group: "vault"
+vault_server_config_path: "/etc/vault.hcl"
+vault_server_storage_dir: "/var/vault"

@@ -1,0 +1,20 @@
+- name: config file
+  template:
+    src: vault-bootstrapping.hcl.j2
+    dest: "{{ vault_server_config_path }}"
+    owner: "{{ vault_server_user }}"
+    group: "{{ vault_server_group }}"
+
+- name: Storage directory
+  file:
+    owner: "{{ vault_server_user }}"
+    group: "{{ vault_server_group }}"
+    path: "{{ vault_server_storage_dir }}"
+    state: directory
+    mode: 0770
+
+- name: vault service
+  service:
+    name: vault
+    state: restarted
+    enabled: yes

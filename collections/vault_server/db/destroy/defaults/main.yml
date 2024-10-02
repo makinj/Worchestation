@@ -1,0 +1,4 @@
+---
+vault_server_storage_path: "/var/vault"
+vault_server_db_destroy_confirm: false
+vault_server_service_name: "vault"

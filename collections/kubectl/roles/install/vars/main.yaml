@@ -1,0 +1,2 @@
+release_mapping_ubuntu:
+  buster: xenial

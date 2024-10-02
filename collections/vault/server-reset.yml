@@ -1,0 +1,8 @@
+- hosts: vault_servers
+  become: true
+  vars_prompt:
+    - name: "vault_server_db_destroy_confirm"
+      prompt: "Do you really want to delete your vault instance's stored state (yes/no)?"
+      private: no
+  roles:
+    - server-db-destroy

@@ -1,0 +1,2 @@
+controller_vim_config_dir: "{{ controller_tools_config_dir }}/vim"
+host_install_vim: false
