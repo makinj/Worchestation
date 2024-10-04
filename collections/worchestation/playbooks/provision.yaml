@@ -1,5 +1,5 @@
 - name: Deploy to vagrant guests
-  hosts: "vagrant_hypervisor"
+  hosts: "vagrant_guest:&running"
   roles: 
     - role: makinj.updates.install
       tags: ['always']
@@ -25,23 +25,23 @@
     - role: makinj.fonts.install
       tags: ['gui','fonts']
     
-    - role: makinj.background.random
-      tags: ['gui','background']
-    - role: makinj.chrome.install
-      tags: ['gui','chrome']
+    # - role: makinj.background.random
+    #   tags: ['gui','background']
+    # - role: makinj.chrome.install
+    #   tags: ['gui','chrome']
     
-    - role: makinj.sublime.install
-      tags: ['gui','sublime']
+    # - role: makinj.sublime.install
+    #   tags: ['gui','sublime']
     
     #continue making installations conditional here
-    - role: makinj.docker.install
-      tags: ['tools','infra','docker']
+    # - role: makinj.docker.install
+    #   tags: ['tools','infra','docker']
     
-    # - role: common-provisioners/makinj.sdk.install
+    # - role: common-provisioners/makinj.gcloud.install
     #   tags: ['tools','infra','gcloud_sdk']
     
-    - role: makinj.kubectl.install
-      tags: ['tools','infra','k8s','kubectl']
+    # - role: makinj.kubectl.install
+    #   tags: ['tools','infra','k8s','kubectl']
     
     # - role: common-provisioners/makinj.kind.install
     #   tags: ['tools','infra','k8s','kind']

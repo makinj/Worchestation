@@ -55,6 +55,7 @@ def get_machines():
         parts=line.split(",")
         if len(parts)>=3 and parts[2]=="state":
             machines.append(parts[1])
+    print('got machines:',machines)
     return machines
 
 def get_ssh_port(machine):
@@ -135,11 +136,13 @@ class InventoryModule(BaseFileInventoryPlugin, Cacheable):
             if ssh_port:
                 results[machine]['ssh_port']=ssh_port
         os.chdir(starting_path)
+        print('got results',results)
 
         return results
 
     def populate(self, results):
         vagrant_group_name='vagrant_guest'
+        print('populating',results)
 
         self.inventory.add_group(vagrant_group_name)
         self.inventory.set_variable(vagrant_group_name,'ansible_host', '127.0.0.1')
