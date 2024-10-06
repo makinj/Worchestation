@@ -25,15 +25,15 @@
     - role: makinj.fonts.install
       tags: ['gui','fonts']
     
-    # - role: makinj.background.random
-    #   tags: ['gui','background']
-    # - role: makinj.chrome.install
-    #   tags: ['gui','chrome']
+    - role: makinj.background.random
+      tags: ['gui','background']
+    - role: makinj.chrome.install
+      tags: ['gui','chrome']
     
-    # - role: makinj.sublime.install
-    #   tags: ['gui','sublime']
+    - role: makinj.sublime.install
+      tags: ['gui','sublime']
     
-    #continue making installations conditional here
+    # continue making installations conditional here
     # - role: makinj.docker.install
     #   tags: ['tools','infra','docker']
     

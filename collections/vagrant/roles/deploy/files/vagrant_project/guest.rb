@@ -41,6 +41,9 @@ class Guest
       @config.has_key?("vram_MBs") ? setup_graphics(@config['vram_MBs']) : setup_graphics()
     end
 
+    @graphics_controller_set = @config.has_key?("graphics_controller") ? @config['graphics_controller'] : "vmsvga"
+    setup_graphics_controller(@graphics_controller_set)
+
     @rdp_enable = @config.has_key?("rdp") ? @config['rdp'] : false
     setup_rdp(@rdp_enable)
 
@@ -131,6 +134,13 @@ class Guest
     vb() do |vbox|
       vbox.gui = true
       vbox.customize ["modifyvm", :id, "--vram", vram]
+    end
+  end
+
+  def setup_graphics_controller(graphics_controller="vmsvga")
+    vb() do |vbox|
+      vbox.gui = true
+      vbox.customize ["modifyvm", :id, "--graphicscontroller", graphics_controller]
     end
   end
 
