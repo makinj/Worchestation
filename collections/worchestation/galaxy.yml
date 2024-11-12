@@ -8,7 +8,7 @@ namespace: makinj
 name: worchestation
 
 # The version of the collection. Must be compatible with semantic versioning
-version: 1.0.2
+version: 1.0.3
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
@@ -50,11 +50,11 @@ dependencies:
   makinj.background: '>=1.0.0'
   makinj.chrome: '>=1.0.0'
   makinj.sublime: '>=1.0.0'
-  # makinj.docker: '>=1.0.0'
-  # makinj.kubectl: '>=1.0.0'
-  # makinj.kind: '>=1.0.0'
+  makinj.docker: '>=1.0.0'
+  makinj.gcloud: '>=1.0.0'
+  makinj.kubectl: '>=1.0.0'
   # makinj.golang: '>=1.0.0'
-  # makinj.gcloud: '>=1.0.0'
+  # makinj.kind: '>=1.0.0'
   # makinj.aws: '>=1.0.0'
   # makinj.burp: '>=1.0.0'
   # makinj.autochrome: '>=1.0.0'

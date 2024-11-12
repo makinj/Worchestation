@@ -1,0 +1,179 @@
+{
+  "main": {
+    "id": "87fc5c66b6d9698a",
+    "type": "split",
+    "children": [
+      {
+        "id": "a6f33f197e5ac4c2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cd6b597c3683d267",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Collections/Chrome.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ed81a8d6af6f6b29",
+    "type": "split",
+    "children": [
+      {
+        "id": "1aec98fd993036e0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8275299b02e5be2d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "92ac1818ad6d869a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "eddd3a3aa28255ba",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c3f52809a6184d0d",
+    "type": "split",
+    "children": [
+      {
+        "id": "bb408a56e5d6e8be",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cf49b32b8138c1b7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Collections/Chrome.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c82ab5942dad9c62",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Collections/Chrome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9e523c32fc6a1f54",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d8b86b64c810a4c1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Collections/Chrome.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "cd6b597c3683d267",
+  "lastOpenFiles": [
+    "Collections/Unifi.md",
+    "Collections/Golang.md",
+    "Collections/Tmux.md",
+    "Collections/Worchestation.md",
+    "Collections/Vault Server.md",
+    "Collections/Autochrome.md",
+    "Collections/ScoutSuite.md",
+    "Collections/Terraform.md",
+    "Collections/Vagrant.md",
+    "Collections/Packer.md",
+    "Collections/ZSH.md",
+    "Collections/XFCE.md",
+    "Collections/Vault.md",
+    "Collections/Users.md",
+    "Collections/Updates.md",
+    "Collections/Sublime.md",
+    "Collections/Samba.md",
+    "Collections/Kubectl.md",
+    "Collections/Katoolin.md",
+    "Collections/Gcloud.md",
+    "Collections/Fonts.md",
+    "Collections/Ethereum.md",
+    "Collections/Docker.md",
+    "Collections/Configs.md",
+    "Collections/Chrome.md",
+    "Collections/Burpsuite.md",
+    "Collections"
+  ]
+}

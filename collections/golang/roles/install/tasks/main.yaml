@@ -1,0 +1,13 @@
+- name: "Install golang if necessary ({{install_golang}})"
+  when: host_install_golang
+  - name: Add specified repositories into sources list using specified filename
+    become: true
+    apt_repository:
+      repo: ppa:longsleep/golang-backports
+      state: present
+      filename: golang 
+  - name: Install packages
+    become: true
+    apt:
+      update_cache: true
+      pkg: golang-go

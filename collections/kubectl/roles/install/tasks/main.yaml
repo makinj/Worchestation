@@ -4,13 +4,13 @@
     - name: Install GPG key for GCP SDK
       become: true
       apt_key:
-        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        url: https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key
         state: present
 
     - name: Add kubernetes repositories into sources list
       become: true
       apt_repository:
-        repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+        repo: "deb https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /"
         state: present
         filename: kubernetes
 

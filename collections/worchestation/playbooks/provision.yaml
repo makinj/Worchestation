@@ -33,18 +33,19 @@
     - role: makinj.sublime.install
       tags: ['gui','sublime']
     
+    - role: makinj.docker.install
+      tags: ['tools','infra','docker']
+    
+    - role: makinj.gcloud.install
+      tags: ['tools','infra','gcloud']
+    
+    - role: makinj.kubectl.install
+      tags: ['tools','infra','k8s','kubectl']
+
     # continue making installations conditional here
-    # - role: makinj.docker.install
-    #   tags: ['tools','infra','docker']
-    
-    # - role: common-provisioners/makinj.gcloud.install
-    #   tags: ['tools','infra','gcloud_sdk']
-    
-    # - role: makinj.kubectl.install
-    #   tags: ['tools','infra','k8s','kubectl']
+    # - role: makinj.golang.install
+    #   tags: ['tools','infra','development','golang']
     
     # - role: common-provisioners/makinj.kind.install
     #   tags: ['tools','infra','k8s','kind']
     
-    # - role: common-makinj.golang.install
-    #   tags: ['tools','infra','development','golang']
