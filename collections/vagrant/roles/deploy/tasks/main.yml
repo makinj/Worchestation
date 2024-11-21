@@ -1,6 +1,6 @@
-- name: Build base boxes with packer
-  include_role:
-    name: makinj.packer.build
+# - name: Build base boxes with packer
+#   include_role:
+#     name: makinj.packer.build
 
 - name: Copy vagrant project files
   copy:
@@ -25,7 +25,7 @@
     var: vagrant_guest_configs
     verbosity: 2
 
-- name: Copy vagrant project files
+- name: Write guest configs
   copy:
     dest: "{{ vagrant_workdir }}/guests.json"
     mode: '0700'

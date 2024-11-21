@@ -9,7 +9,7 @@
 
   - name: "Archive paths to {{fetch_paths_temp_archive.path}}/config.tar.gz"
     include_role:
-      name: configs-orchestration/archive
+      name: makinj.configs.archive
     vars:
       archive_root: "{{fetch_paths_root}}"
       archive_sources: "{{fetch_paths_sources}}" 

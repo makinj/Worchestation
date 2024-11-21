@@ -4,7 +4,6 @@ xfce_user_config_paths:
   - .config/dconf
   - .config/htop
   - .config/konsolerc
-
   - .config/pulse
   - .config/gtk-2.0
   - .config/gtk-3.0

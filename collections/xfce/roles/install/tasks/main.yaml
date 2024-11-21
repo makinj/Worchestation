@@ -7,7 +7,6 @@
       update_cache: yes
       pkg:
         - xfce4 
-        - konsole 
         - thunar-archive-plugin
 
   - name: "Extract {{ controller_xfce_config_dir }} for system"

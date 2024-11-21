@@ -1,11 +1,22 @@
 
 - name: Set variables from item variable
   set_fact:
-    packer_image_name: "{{ packer_image_item.key }}"
-    packer_image_vars: "{{ packer_image_defaults | combine({'name':packer_image_item.key,'output_image_path': packer_workdir+'/builds/'+packer_image_item.key+'.'+packer_packager_extensions[(packer_image_defaults|combine(packer_image_item.value))['packager']],'host_ip':hostvars[inventory_hostname]['ansible_default_ipv4']['address']}) | combine(packer_image_item.value) }}"
-  when: packer_image_item is defined
+    packer_image_vars: {}
+    packer_image_vars:
+      name: packer_image_name,
+      output_image_path: "{{packer_workdir}}/builds/{{packer_image_name}}.{{packer_packager_extensions[hostvars[vagrant_guest_name]['packager']]}}"
+      host_ip: "{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}"
+  when: packer_image_name is defined
 
-- name: Set output path
+- name: Copy packer image configs from host variables
+  set_fact:
+    packer_image_vars: "{{ packer_image_vars | combine( [item | combine({'key':item.key[7:]})] | items2dict ) }}"
+  with_items: "{{ dict(hostvars[packer_image_name]) | dict2items}}"
+  loop_control:
+    label: "{{item.key}}"
+  when: item.key.startswith('packer_')
+
+- name: Start with empty configs and stripped vars
   set_fact:
     packer_image_config: {}
     packer_image_vars_stripped: {}
@@ -19,6 +30,7 @@
 - name: "Build {{ packer_image_name }} if necessary"
   when: (not packer_image_path_stat.stat.exists)
   block:
+    - 
     - name: "Copy static http files for {{ packer_image_vars['distro'] }} to {{ packer_workdir }}/http/{{ packer_image_name }}"
       copy:
         src: "{{controller_packer_config_dir}}/distros/{{ packer_image_vars['distro'] }}/http/"
@@ -39,7 +51,7 @@
 
     - name: "merge configs sections between default, platform, and distro"
       set_fact:
-        packer_image_provisioner_roles: "{{ packer_image_provisioner_roles | default([]) | union(lookup('file',controller_packer_config_dir+'/'+item.1+'/'+(packer_image_vars[item.0])+'/provisioner_roles.json', errors='ignore') | default('[]', true) | from_json) }}"
+        packer_image_provisioner_roles: "{{ packer_image_provisioner_roles | default([]) + (lookup('file',controller_packer_config_dir+'/'+item.1+'/'+(packer_image_vars[item.0])+'/provisioner_roles.json', errors='ignore') | default('[]', true) | from_json) }}"
         packer_image_config_builder: "{{ packer_image_config_builder | default({}) | combine(lookup('file',controller_packer_config_dir+'/'+item.1+'/'+(packer_image_vars[item.0])+'/builder.json', errors='ignore') | default('{}', true) | from_json) }}"
         packer_image_config_post_processor: "{{ packer_image_config_post_processors | default({}) | combine(lookup('file',controller_packer_config_dir+'/'+item.1+'/'+(packer_image_vars[item.0])+'/post_processor.json', errors='ignore') | default('{}', true) | from_json) }}"
       loop:
@@ -49,7 +61,7 @@
 
     - name: "merge configs sections for the profiles"
       set_fact:
-        packer_image_provisioner_roles: "{{ packer_image_provisioner_roles | default([]) | union(lookup('file',controller_packer_config_dir+'/profiles/'+item+'/provisioner_roles.json', errors='ignore') | default('[]', true) | from_json) }}"
+        packer_image_provisioner_roles: "{{ packer_image_provisioner_roles | default([]) + (lookup('file',controller_packer_config_dir+'/profiles/'+item+'/provisioner_roles.json', errors='ignore') | default('[]', true) | from_json) }}"
         packer_image_config_builder: "{{ packer_image_config_builder | default({}) | combine(lookup('file',controller_packer_config_dir+'/profiles/'+item+'/builder.json', errors='ignore') | default('{}', true) | from_json) }}"
         packer_image_config_post_processor: "{{ packer_image_config_post_processors | default({}) | combine(lookup('file',controller_packer_config_dir+'/profiles/'+item+'/post_processor.json', errors='ignore') | default('{}', true) | from_json) }}"
       with_items: "{{ packer_image_vars['profiles'] }}"
@@ -125,7 +137,7 @@
     - name: "Kick off build job for {{ packer_image_name }} image with packer"
       command:
         argv:
-          - "{{ packer_path }}"
+          - "{{ packer_binary_path }}"
           - build
           - -force
           - -var-file
@@ -145,7 +157,7 @@
         packer_build
     - name: "store job ID {{packer_image_build_job.ansible_job_id}}"
       set_fact:
-        packer_image_build_jobs: "{{ packer_image_build_jobs | default([]) | union([packer_image_build_job.ansible_job_id]) }}"
+        packer_image_build_jobs: "{{ packer_image_build_jobs | default([]) + ([packer_image_build_job.ansible_job_id]) }}"
       tags:
         packer_build
 

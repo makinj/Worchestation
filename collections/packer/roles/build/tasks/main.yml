@@ -1,8 +1,15 @@
+- name: 'Build Packer Images'
+  makinj.packer.packer_build:
+    image_hosts: groups[packer_guest_group]
+
+- name: 'Show vagrant guests from {{packer_guest_group}}'
+  debug:
+    var: 'groups[packer_guest_group]'
 - name: Build each image
   include_tasks: build_image.yml
-  with_items: "{{ packer_image_configs | dict2items }}"
+  with_items: "{{ groups[packer_guest_group] }}"
   loop_control:
-    loop_var: packer_image_item
+    loop_var: packer_image_name
 
 - name: "Waiting for {{packer_image_build_jobs | default([])|length}} packer images builds to complete"
   async_status:

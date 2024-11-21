@@ -14,7 +14,7 @@
   tags:
     - vagrant_box_add
   set_fact:
-    vagrant_box_add_command_args: "{{ (vagrant_box_add_command_args | default([])) | union([item]) }}"
+    vagrant_box_add_command_args: "{{ (vagrant_box_add_command_args | default([])) + [item] }}"
   when: item != omit
   loop:
     - "{{ vagrant_binary_path }}"

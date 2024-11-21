@@ -12,4 +12,4 @@
 
 - name: "add virtualbox guest script to list of provisioners"
   set_fact:
-    packer_image_config_provisioners: "{{packer_image_config_provisioners | union(lookup('file', 'packer_provisioners.json') | from_json)}}"
+    packer_image_config_provisioners: "{{packer_image_config_provisioners + (lookup('file', 'packer_provisioners.json') | from_json)}}"

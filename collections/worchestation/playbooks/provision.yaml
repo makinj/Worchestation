@@ -1,5 +1,5 @@
 - name: Deploy to vagrant guests
-  hosts: "vagrant_guest:&running"
+  hosts: "{{target_hosts|default('all')}}:&worchestation:&running"
   roles: 
     - role: makinj.updates.install
       tags: ['always']
@@ -29,7 +29,10 @@
       tags: ['gui','background']
     - role: makinj.chrome.install
       tags: ['gui','chrome']
-    
+
+    - role: makinj.alacritty.install
+      tags: ['gui','alacritty']
+        
     - role: makinj.sublime.install
       tags: ['gui','sublime']
     

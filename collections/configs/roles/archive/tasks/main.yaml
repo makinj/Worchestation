@@ -1,7 +1,6 @@
 # create archive_dest_prefix.tar
 - name: "Create archive file at {{archive_dest_prefix}}.tar"
   command:
-    warn: false
     argv:
       - tar
       - -cf
@@ -12,7 +11,6 @@
 - name: "Add each path to {{archive_dest_prefix}}.tar"
   become: true
   command:
-    warn: false
     argv:
       - tar
       - -rf

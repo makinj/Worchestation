@@ -7,7 +7,7 @@ else
 fi
 for coll in $colls;do
   echo building $coll
-  bundle=$(ansible-galaxy collection build --force $coll| cut -d' ' -f 6 )
+  bundle=$(ansible-galaxy collection build --output-path ./builds/ --force $coll| cut -d' ' -f 6 )
 
   if echo $bundle | grep -q "TKTK";then
     echo fill in info for "$coll"
