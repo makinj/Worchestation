@@ -10,27 +10,27 @@
     label: "{{item.key}}"
   when: item.key.startswith('vagrant_')
 
-- name: build vagrant box add command
-  tags:
-    - vagrant_box_add
-  set_fact:
-    vagrant_box_add_command_args: "{{ (vagrant_box_add_command_args | default([])) + [item] }}"
-  when: item != omit
-  loop:
-    - "{{ vagrant_binary_path }}"
-    - box
-    - add
-    - "file:///{{vagrant_boxes_path}}/{{ hostvars[vagrant_guest_name].vagrant_box }}.box"
-    - "{{ (force_imports | default(False)) | ternary('--force', omit) }}"
-    - --name
-    - "{{ hostvars[vagrant_guest_name].vagrant_box }}"
+# - name: build vagrant box add command
+#   tags:
+#     - vagrant_box_add
+#   set_fact:
+#     vagrant_box_add_command_args: "{{ (vagrant_box_add_command_args | default([])) + [item] }}"
+#   when: item != omit
+#   loop:
+#     - "{{ vagrant_binary_path }}"
+#     - box
+#     - add
+#     - "file:///{{vagrant_boxes_path}}/{{ hostvars[vagrant_guest_name].vagrant_box }}.box"
+#     - "{{ (force_imports | default(False)) | ternary('--force', omit) }}"
+#     - --name
+#     - "{{ hostvars[vagrant_guest_name].vagrant_box }}"
 
-- name: "Import {{ hostvars[vagrant_guest_name].vagrant_box }} Box path for {{ vagrant_guest_name }}"
-  tags:
-    - vagrant_box_add
-  command:  
-    argv: "{{vagrant_box_add_command_args}}"
-  ignore_errors: true
+# - name: "Import {{ hostvars[vagrant_guest_name].vagrant_box }} Box path for {{ vagrant_guest_name }}"
+#   tags:
+#     - vagrant_box_add
+#   command:  
+#     argv: "{{vagrant_box_add_command_args}}"
+#   ignore_errors: true
 
 - name: "Add guest name=\"{{ vagrant_guest_name }}\""
   set_fact:

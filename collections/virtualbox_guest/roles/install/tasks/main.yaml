@@ -16,13 +16,14 @@
         src: "{{ansible_env.HOME}}/VBoxGuestAdditions.iso"
         fstype: iso9660
         opts: loop
-        state: present
+        state: ephemeral
       become: true
+      ignore_errors: true
 
     - name: Run Guest Additions Installer
       command:
         argv:
-        - /mnt/VBoxGuestAdditions/VBoxLinuxAdditions.run"
+        - /mnt/VBoxGuestAdditions/VBoxLinuxAdditions.run
       become: true
       ignore_errors: true
 

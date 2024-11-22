@@ -1,7 +1,7 @@
 - name: Copy vagrant project files
   copy:
     src: vagrant_project/
-    dest: "{{ vagrant_workdir }}"
+    dest: "{{ vagrant_work_dir }}"
     mode: '0700'
 - name: Declare empty guest configs
   set_fact:
@@ -22,7 +22,7 @@
 
 - name: Write guest configs
   copy:
-    dest: "{{ vagrant_workdir }}/guests.json"
+    dest: "{{ vagrant_work_dir }}/guests.json"
     mode: '0700'
     content: "{{ vagrant_guest_configs | to_nice_json }}"
 
@@ -32,5 +32,5 @@
     - "{{ vagrant_binary_path }}"
     - up
     - "{{item}}"
-    chdir: "{{ vagrant_workdir }}"
+    chdir: "{{ vagrant_work_dir }}"
   with_items: "{{ groups[vagrant_guest_group] }}"
