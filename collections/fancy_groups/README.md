@@ -1,4 +1,4 @@
-# ansible_inventory_utilities
+# Fancy Groups
 Combine and invert group relationships to simplify complex and repetitive Ansible inventories
 
 ## Invert groups

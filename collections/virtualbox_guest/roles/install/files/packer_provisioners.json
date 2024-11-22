@@ -1,6 +1,0 @@
-[
-  {
-    "type":"shell",
-    "script":"provisioners/platforms/virtualbox_guest/provision.sh"
-  }
-]

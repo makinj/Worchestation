@@ -1,7 +1,3 @@
-# - name: Build base boxes with packer
-#   include_role:
-#     name: makinj.packer.build
-
 - name: Copy vagrant project files
   copy:
     src: vagrant_project/
@@ -13,7 +9,6 @@
 - name: 'Show vagrant guests from {{vagrant_guest_group}}'
   debug:
     var: 'groups[vagrant_guest_group]'
-#    verbosity: 2
 - name: Add to guest config
   include_tasks: add_guest_config.yml
   with_items: "{{ groups[vagrant_guest_group] }}"

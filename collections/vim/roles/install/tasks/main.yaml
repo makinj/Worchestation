@@ -1,5 +1,5 @@
 - name: "Install vim if necessary ({{install_vim}})"
-  when: host_install_vim
+  when: "'host_install_vim' in group_names"
   block:
   - name: "Installing vim"
     become: true

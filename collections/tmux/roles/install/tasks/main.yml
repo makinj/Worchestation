@@ -1,5 +1,5 @@
 - name: "Install tmux if necessary ({{install_tmux}})"
-  when: host_install_tmux
+  when: "'host_install_tmux' in group_names"
   block:
   - name: "Installing tmux"
     become: true
