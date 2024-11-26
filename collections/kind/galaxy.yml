@@ -5,10 +5,10 @@
 namespace: makinj
 
 # The name of the collection. Has the same character restrictions as 'namespace'
-name: worchestation
+name: kind
 
 # The version of the collection. Must be compatible with semantic versioning
-version: 1.0.6
+version: 1.0.0
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
@@ -27,6 +27,7 @@ description: your collection description
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'
 license:
 - MIT
+
 # The path to the license file for the collection. This path is relative to the root of the collection. This key is
 # mutually exclusive with 'license'
 license_file: ''
@@ -39,36 +40,7 @@ tags: []
 # collection label 'namespace.name'. The value is a version range
 # L(specifiers,https://python-semanticversion.readthedocs.io/en/latest/#requirement-specification). Multiple version
 # range specifiers can be set and are separated by ','
-dependencies:
-  makinj.updates: '>=1.0.0'
-  makinj.virtualbox_guest: '>=1.0.0'
-  makinj.users: '>=1.0.0'
-  makinj.zsh: '>=1.0.0'
-  makinj.tmux: '>=1.0.0'
-  makinj.vim: '>=1.0.0'
-  makinj.xfce: '>=1.0.0'
-  makinj.fonts: '>=1.0.0'
-  makinj.background: '>=1.0.0'
-  makinj.chrome: '>=1.0.0'
-  makinj.alacritty: '>=1.0.0'
-  makinj.sublime: '>=1.0.0'
-  makinj.docker: '>=1.0.0'
-  makinj.gcloud: '>=1.0.0'
-  makinj.kubectl: '>=1.0.0'
-  makinj.golang: '>=1.0.0'
-  makinj.kind: '>=1.0.0'
-  makinj.kali: '>=1.0.0'
-  # makinj.aws: '>=1.0.0'
-  # makinj.burp: '>=1.0.0'
-  # makinj.autochrome: '>=1.0.0'
-  # makinj.configs: '>=1.0.0'
-  # makinj.ethereum: '>=1.0.0'
-  # makinj.samba: '>=1.0.0'
-  # makinj.scoutsuite: '>=1.0.0'
-  # makinj.terraform: '>=1.0.0'
-  # makinj.packer: '>=1.0.0'
-  # makinj.vagrant: '>=1.0.0'
-  # makinj.vault: '>=1.0.0'
+dependencies: {}
 
 # The URL of the originating SCM repository
 repository: https://github.com/makinj/Worchestation

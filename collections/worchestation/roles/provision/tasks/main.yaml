@@ -1,4 +1,6 @@
 - name: "Include role to update fetch configuration for {{fetch_service_config.name}}"
+  tags:
+    - always
   include_role:
     name: "{{worchestation_role.role}}"
     apply:
@@ -52,11 +54,12 @@
     
     - role: makinj.kubectl.install
       tags: ['tools','infra','k8s','kubectl']
+    
+    - role: makinj.kind.install
+      tags: ['tools','infra','k8s','kind']
+    
+    - role: makinj.golang.install
+      tags: ['tools','development','golang']
 
-    # continue making installations conditional here
-    # - role: makinj.golang.install
-    #   tags: ['tools','infra','development','golang']
-    
-    # - role: common-provisioners/makinj.kind.install
-    #   tags: ['tools','infra','k8s','kind']
-    
+    - role: makinj.kali.install
+      tags: ['tools','security','kali']

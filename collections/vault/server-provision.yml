@@ -1,8 +1,0 @@
-- hosts: vault_servers
-  become: true
-  roles:
-    - server-tls-disable
-    - server-db-create
-    - server-unseal
-    - server-db-init
-    - server-tls-bootstrap

@@ -17,6 +17,7 @@
         dest: "/"
         mode: "0755"
         owner: "root"
+      tags: configuration
 
     - name: "Extract {{ controller_xfce_config_dir }} for {{ xfce_usernames }}"
       become: true
@@ -29,5 +30,6 @@
       with_items: "{{ xfce_usernames }}"
       loop_control:
         loop_var: xfce_username
+      tags: configuration
     
 

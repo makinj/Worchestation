@@ -1,0 +1,4 @@
+- name: Unseal vault with known unseal keys
+  shell: "{{vault_server_binary_path | quote}} "
+  environment:
+    VAULT_ADDR: "http://127.0.0.1:{{ vault_server_port | escape }}"

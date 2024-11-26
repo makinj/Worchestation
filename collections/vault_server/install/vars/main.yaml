@@ -1,1 +1,0 @@
-vault_server_binary_path: "{{ (vault_server_install_path, 'vault') | path_join }}"

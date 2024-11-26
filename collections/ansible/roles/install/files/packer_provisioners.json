@@ -1,6 +1,0 @@
-[
-  {
-    "type":"shell",
-    "script":"provisioners/tools/ansible/provision.sh"
-  }
-]

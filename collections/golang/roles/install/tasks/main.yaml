@@ -1,13 +1,18 @@
 - name: "Install golang if necessary ({{install_golang}})"
-  when: host_install_golang
-  - name: Add specified repositories into sources list using specified filename
-    become: true
-    apt_repository:
-      repo: ppa:longsleep/golang-backports
-      state: present
-      filename: golang 
-  - name: Install packages
-    become: true
-    apt:
-      update_cache: true
-      pkg: golang-go
+  when: "'host_install_golang' in group_names"
+  block:
+    - name: "Download golang binaries"
+      unarchive:
+        src: https://go.dev/dl/go{{golang_version}}.{{ansible_system | lower}}-{{golang_architecture_name_mapping[ansible_facts.userspace_architecture]}}.tar.gz
+        dest: "{{golang_install_dir}}"
+        remote_src: true
+      become: true
+    - name: "Update PATH for golang users"
+      lineinfile:
+        path: "/home/{{golang_username}}/.zshrc"
+        line: "export PATH=$PATH:{{golang_install_dir}}/bin:$GOPATH/bin"
+        search_string: "export PATH=$PATH:{{golang_install_dir}}/bin:$GOPATH/bin"
+      with_items: "{{ golang_usernames }}"
+      loop_control:
+        loop_var: golang_username
+      become: true
