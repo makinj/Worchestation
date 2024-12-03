@@ -15,8 +15,10 @@
       copy: true
       src: "{{ controller_tmux_config_dir }}/user.tar.gz"
       dest: "/home/{{ tmux_username }}"
-      mode: "0600"
+      # mode: "0600"
       owner: "{{ tmux_username }}"
+      group: "{{ tmux_username }}"
     with_items: "{{ tmux_usernames }}"
     loop_control:
       loop_var: tmux_username
+    tags: configuration

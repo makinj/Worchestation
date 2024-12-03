@@ -8,8 +8,7 @@
     register: fetch_paths_temp_archive
 
   - name: "Archive paths to {{fetch_paths_temp_archive.path}}/config.tar.gz"
-    include_role:
-      name: makinj.configs.archive
+    include_tasks: archive.yml
     vars:
       archive_root: "{{fetch_paths_root}}"
       archive_sources: "{{fetch_paths_sources}}" 

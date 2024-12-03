@@ -18,6 +18,7 @@
       file:
         path: "/home/{{ font_username }}/.fonts/"
         owner: "{{ font_username }}"
+        group: "{{ font_username }}"
         state: directory
         mode: '0755'
       with_items: "{{ font_usernames }}"

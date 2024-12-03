@@ -1,7 +1,7 @@
 ---
 
 - name: "fetching configs for {{fetch_services}}"
-  include_tasks: service.yaml
+  include_tasks: service.yml
   with_items: "{{ fetch_services }}"
   loop_control:
     loop_var: fetch_service

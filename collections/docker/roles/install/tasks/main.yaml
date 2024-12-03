@@ -14,10 +14,10 @@
   - name: Install GPG key for Docker
     become: true
     apt_key:
-      url: "https://download.docker.com/linux/{{ansible_facts.distribution |lower}}/gpg"
+      url: "https://download.docker.com/linux/debian/gpg"
       state: present
 
-  - name: Add specified repositories into sources list using specified filename
+  - name: Add Docker repositories into sources list
     become: true
     apt_repository:
       repo: "deb [arch={{docker_architecture_name_mapping[ansible_facts.userspace_architecture]}}] https://download.docker.com/linux/{{ansible_facts.distribution|lower}} {{ansible_facts.distribution_release}} stable"

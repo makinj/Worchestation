@@ -81,6 +81,7 @@ class Guest
       vagrant.ssh.verify_host_key = :accept_new_or_local_tunnel
       vagrant.vm.provider "virtualbox" do |vbox|
         vagrant.vm.synced_folder ".", "/vagrant", disabled: true
+        vbox.check_guest_additions = false
         vbox.name = @name.gsub(/\//,'-')
 
         vbox.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]

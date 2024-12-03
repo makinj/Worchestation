@@ -1,3 +1,0 @@
-packer_binary_path: /usr/bin/packer
-vagrant_binary_path: /usr/bin/vagrant
-force_imports: false

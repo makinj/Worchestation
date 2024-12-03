@@ -24,15 +24,16 @@
       command:
         argv:
         - /mnt/VBoxGuestAdditions/VBoxLinuxAdditions.run
+        - --nox11
       become: true
       ignore_errors: true
 
-    - name: Run Guest Additions Installer
-      command:
-        argv:
-        - /bin/bash
-        - -c
-        - /opt/VBoxGuestAdditions-*/init/vboxadd setup
-      become: true
-      ignore_errors: true
+    # - name: Run Guest Additions Installer
+    #   command:
+    #     argv:
+    #     - /bin/bash
+    #     - -c
+    #     - /opt/VBoxGuestAdditions-*/init/vboxadd setup
+    #   become: true
+    #   ignore_errors: true
       

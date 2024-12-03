@@ -1,3 +1,3 @@
 controller_zsh_config_dir: "{{ controller_tools_config_dir }}/zsh"
-zsh_usernames: "{{main_username}}"
-host_install_zsh: false
+zsh_usernames: 
+  - "{{main_username}}"

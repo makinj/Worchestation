@@ -8,7 +8,4 @@
   roles:
     - makinj.vault.server_db_create
     - makinj.vault.server_db_unseal
-    # - makinj.vault.server_db_init_ca
-    # - makinj.vault.server_db_init_int_ca
-    # - makinj.vault.server_tls_bootstrap
-#     # - server-tls-bootstrap
+    - makinj.vault.server_db_init

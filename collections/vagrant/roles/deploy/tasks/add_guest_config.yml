@@ -1,8 +1,8 @@
-- name: Declare empty guest config
+- name: "Declare empty guest config for {{vagrant_guest_name}}" 
   set_fact:
     vagrant_guest_config: {}
 
-- name: Copy vagrant guest configs from host variables
+- name: "Copy vagrant guest configs from host variables for {{vagrant_guest_name}}"
   set_fact:
     vagrant_guest_config: "{{ vagrant_guest_config | combine( [item | combine({'key':item.key[8:]})] | items2dict ) }}"
   with_items: "{{ dict(hostvars[vagrant_guest_name]) | dict2items}}"
@@ -36,12 +36,22 @@
   set_fact:
     vagrant_guest_config: "{{ vagrant_guest_config | combine( {'name': vagrant_guest_name} ) }}"
 
-- name: Show vagrant guest config
+- name: "Get stats of a background picture for {{vagrant_guest_name}}"
+  ansible.builtin.stat:
+    path: "{{vagrant_guest_config['workspaces_path']}}/{{vagrant_guest_name}}/sf/background.png"
+  register: vagrant_guest_background_stat
+- name: "Download random background for {{vagrant_guest_name}}"
+  get_url:
+    url: https://picsum.photos/1920/1200
+    dest: "{{vagrant_guest_config['workspaces_path']}}/{{vagrant_guest_name}}/sf/background.png"
+  when: "not vagrant_guest_background_stat.stat.exists"
+
+- name: "Show vagrant guest config for {{vagrant_guest_name}}"
   debug:
     var: vagrant_guest_config
     verbosity: 2
 
 
-- name: Add to guest list
+- name: "Add to guest {{vagrant_guest_name}} to list"
   set_fact:
     vagrant_guest_configs: "{{ vagrant_guest_configs + [vagrant_guest_config] }}"

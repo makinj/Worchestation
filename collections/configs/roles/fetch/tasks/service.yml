@@ -12,12 +12,13 @@
 - name: "Include role to update fetch configuration for {{fetch_service_config.name}}"
   include_role:
     name: "{{fetch_service_config.role}}"
-    tasks_from: "fetch.yaml"
+    tasks_from: "configs.yml"
+    defaults_from: "configs.yml"
   when: "fetch_service_config.role"
 
 - name: "Fetch system paths for {{fetch_service.name}}"
   when: "'system_paths' in fetch_service_config and (fetch_service_config.system_paths | length > 0)"
-  include_tasks: paths.yaml
+  include_tasks: paths.yml
   vars:
     fetch_paths_root: "/"
     fetch_paths_sources: "{{fetch_service_config.system_paths}}"
@@ -26,7 +27,7 @@
 
 - name: "Fetch user paths for {{fetch_service.name}}"
   when: "'user_paths' in fetch_service_config and (fetch_service_config.user_paths | length > 0)"
-  include_tasks: paths.yaml
+  include_tasks: paths.yml
   vars:
     fetch_paths_root: "/home/{{fetch_service_config.username}}"
     fetch_paths_sources: "{{fetch_service_config.user_paths}}"

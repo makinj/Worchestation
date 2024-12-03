@@ -18,6 +18,7 @@
       with_items: "{{ alacritty_usernames }}"
       loop_control:
         loop_var: alacritty_username
+      tags: configuration
     - name: Set default terminal
       become: true
       command:  

@@ -19,7 +19,7 @@
       debug:
         msg: 
           - "Root token: {{vault_server_root_token}}"
-          - "unseal keys: {{vault_server_unseal_keys | join(', ')}}"
+          - "Unseal keys: {{vault_server_unseal_keys | join(', ')}}"
   rescue:
     - name: Print when errors
       debug:
